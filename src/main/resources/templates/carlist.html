@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset=" UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+
+
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"-->
+    <!--integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
+    <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+
+
+
+<div th:replace="base :: navlinks"></div>
+<div class="container bg">
+
+    <div class="row">
+
+        <div class="col-md-6 col-sm-12">
+            <a href="#">
+                <img src="/img/dealership.jpg" class="img-fluid" alt="image"/>
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Wellcome!</h4>
+                <p>Thank You for visiting this page, Here yo can do the following: </p><br/>
+
+                <button type="button" class="btn btn-success"><a href="/add"> Add a Car</a></button>
+                <button type="button" class="btn btn-success"><a href="/addcat"> Add Catagories</a></button>
+            </div>
+
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block">Available car categories</button>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="alert alert-danger" role="alert">
+               <p> No categories? <strong>No Problem!</strong> click <a href="/addcat" class="alert-link">here</a> to add a category.
+            </div>
+           <td th:each="cat : ${cats}">
+                <button type="button" class="btn btn-success">[[${cat.type}]]</button>
+            </td> </h3>
+        </div>
+
+    </div>
+    <br/>
+    <hr>
+
+    <button type="button" class="btn btn-primary btn-lg btn-block">Current Car Listings</button>
+
+    <br/>
+
+<div>
+    <tr th:each="car : ${cars}">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h2 class="desc"><strong>[[${car.year}]] [[${car.brand}]] [[${car.model}]]</strong> </h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+
+            <img  th:src="${car.picture}" class="i" alt="car image"/>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="alert alert-success" role="alert">
+                    <strong>Hurry up!!</strong> Limited Time Deal only  $<strong>[[${car.price}]]</strong>
+                </div>
+                <div class="alert alert-success" role="alert">
+                   <p> Car Category: [[${car.category}]]</p>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn-success"><a th:href="@{/update/{id} (id=${car.id})}"> Update car &nbsp;</a></button>
+
+                    <button type="button" class="btn btn-success"> <a th:href="@{/detail/{id} (id=${car.id})}"> View car &nbsp; </a></button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+
+    <div th:replace="base :: footer"></div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>

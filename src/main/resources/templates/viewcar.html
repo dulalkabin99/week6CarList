@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset=" UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"-->
+    <!--integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
+    <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+<div th:replace="base :: navlinks"></div>
+
+
+<div class="container bg">
+
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <h2><strong>[[${car.year}]] [[${car.brand}]] [[${car.model}]]</strong> </h2>
+            <img  th:src="${car.picture}" alt="car image"/>
+        </div>
+
+
+        <div class="col-sm- col-md-5 desc">
+            <h4><strong>About this car</strong></h4>
+            <p><strong>Car category:</strong> [[${car.category}]]</p>
+            <p><strong>Make:</strong> [[${car.brand}]]</p>
+            <p><strong>Model:</strong> [[${car.model}]]</p>
+            <p><strong>Model year:</strong> [[${car.year}]]</p>
+            <p><strong>Features:</strong> This car includes Everything basics Plus in car free wi-fi for a year, Bullet proof glasses, 360 degree outside view in the screen and many more</p>
+
+            <h4>Car Price: [[${car.Price}]] </h4>
+
+            <div class="alert alert-warning" role="alert">
+                <p><strong>Hurry Up</strong> 360 people are interested in this vehicle Book Now...</p>
+                <button type="button" class="btn btn-success">Book Now</button>
+            </div>
+            <button type="button" class="btn btn-success"><a th:href="/"> View all cars/Go to homepage &nbsp;</a></button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <button type="button" class="btn btn-info">
+        <h4><a th:href="@{/update/{id} (id=${car.id})}"> Update this car</a> &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+        </button>
+
+        <button type="button" class="btn btn-info">
+            <h4><a th:href="@{/delete/{id} (id=${car.id})}"> Delete this car</a></h4>
+        </button>
+    </div>
+
+    <div th:replace="base :: footer"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

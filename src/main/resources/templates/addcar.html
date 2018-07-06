@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset=" UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"-->
+    <!--integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div th:replace="base :: navlinks"></div>
+    <div class="container bg">
+        <hr>
+        <div class="alert alert-success" role="alert">
+           <p><strong>Welcome</strong> to Car Registration page</p>
+        </div>
+        <form class="form-horizontal" action="#" th:action="@{/processcar}"
+              th:object="${car}" enctype="multipart/form-data" method="post">
+
+            <div class="row">
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-3 control-label">Manufacturer</label>
+                    <div class="col-sm-8  col-md-7 ">
+                        <input type="text" th:field= "*{brand}" class="form-control input-md" required=""/>
+                        <span th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"></span><br/>
+                    </div>
+                    <div class="col-sm-2  col-md-2 ">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-3 control-label">Model</label>
+                    <div class="col-sm-8  col-md-7 ">
+                        <input type="text" th:field="*{model}" class="form-control input-md" required=""/>
+                        <span th:if="${#fields.hasErrors('model')}" th:errors="*{model}"></span><br/>
+                    </div>
+                    <div class="col-sm-2  col-md-2 ">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-3 control-label">year</label>
+                    <div class="col-sm-8  col-md-7 ">
+                        <input type="number" th:field="*{year}" class="form-control input-md" required=""/>
+                        <span th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span><br/>
+                        <div class="col-sm-2  col-md-2 ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-3 control-label">Price</label>
+                    <div class="col-sm-8  col-md-7 ">
+                        <input type="number" th:field="*{price}" class="form-control input-md" required=""/>
+                        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span><br/>
+                        <div class="col-sm-2  col-md-2 ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-3 control-label">Category</label>
+                    <div class="col-sm-8  col-md-7 ">
+                    <select th:field="*{category}" class="form-control input-md">
+                        <option value="General Vehicles">General vehicles</option>
+                        <table>
+                        <tr th:each="option: ${options}">
+                            <option th:value="${option.type}">[[${option.type}]]</option>
+                        </tr>
+
+
+                        </table>
+
+                        <div class="col-sm-2  col-md-2 "></div>
+                    </select>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-4 control-label"></label>
+                    <div class="col-sm-4 col-md-5">
+                        <input type="file" name="file"/>
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-4 control-label"></label>
+                    <div class="col-sm-4 col-md-4">
+                        <button id="submit" name="submit" class="btn btn-success">Submit</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+
+        <div th:replace="base :: footer"></div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>
